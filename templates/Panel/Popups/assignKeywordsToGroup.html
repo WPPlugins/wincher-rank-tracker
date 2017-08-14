@@ -1,0 +1,13 @@
+<div class="popup-content text-center">
+    <h1>Please confirm to assign</h1>
+
+    <h2> {{ ids.length }} keyword(s) to the group [{{ group.Name }}]</h2>
+
+
+    <button type="submit" data-ng-click="cancel()" >Cancel</button>
+    <button type="submit" data-ng-click="ok()" class="btn-alternative">Confirm</button>
+
+
+    <button title="Close (Esc)" data-ng-click="cancel()" type="button" class="mfp-close">&times;</button>
+    <img data-ng-src="{{config.BASE_PATH}}images/preloader16.gif" class="preloader-small" data-ng-show="popupLoading" alt="loading" />
+</div>

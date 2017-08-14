@@ -1,0 +1,51 @@
+<div class="popup-content">
+    <div data-ng-if="uploadError != null" class="alert alert-danger">{{ uploadError }}</div>
+    <h1 class="text-center">Generate PDF</h1>
+
+    <br />
+
+    <div class="form-group">
+        <label>Keywords</label>
+        <select ng-model="Filter" data-ng-options="k.Text group by dict['keywordfilter_' + k.Type] for k in filterOptions">
+            <option value="">-- All --</option>
+        </select>
+    </div>
+    <p class="font-weight-bold text-center" ng-if="images">{{(selectedIndex+1)}} / {{images.length}}</p>
+    <table class="border-none">
+        <tr>
+            <td class="border-none">
+                <img style="cursor: pointer" data-ng-src="{{config.BASE_PATH}}images/LeftArrow2.png" data-ng-click="prev()" />
+            </td>
+            <td class="text-center border-none">
+                <img alt="logo" data-ng-if="images[selectedIndex]" data-ng-src="{{logoUrl}}={{images[selectedIndex]}}" height="50" style="max-width: 200px;" />
+            </td>
+            <td class="text-right border-none">
+                <img style="cursor: pointer" data-ng-src="{{config.BASE_PATH}}images/RightArrow2.png" data-ng-click="next()" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" class="text-center border-none ">
+                <br />
+                <br />
+                <a class="font-weight-bold text-center" href="" data-ng-click="deleteLogo()">Delete</a>
+            </td>
+        </tr>
+    </table>
+    <br />
+    <div class="form-group text-center">
+        <label>Upload new logotype</label>
+        <br />
+        <br />
+        <input class="center-block" style="width: 170px;" type="file" data-ng-file-select="onFileSelect($files)">
+        <br />
+    </div>
+    <div class="text-center">
+        <a data-ng-click="downloadPdf(images[selectedIndex], Filter)" type="submit" class="paddingRight70 paddingLeft70 no-underline btn btn-alternative">Download PDF</a>
+    </div>
+    <div class="text-center center-block" data-ng-show="popupLoading">
+        <img data-ng-src="{{config.BASE_PATH}}images/preloader16.gif" class="text-center center-block" alt="loading" />
+    </div>
+    <button
+            title="Close (Esc)" data-ng-click="cancel()" type="button" class="mfp-close">
+        &times;</button>
+</div>
